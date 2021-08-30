@@ -22,6 +22,9 @@ const FoodSchema = new Mongoose.Schema({
         ref:"Restaurants",
         required: true,
     }
+    },
+    {
+        timestamps: true,
     }
     
 );

@@ -10,7 +10,7 @@ const RestaurantSchema = new Mongoose.Schema({
     ],
     restaurantTiming: String,
     contactNumber: Number,
-    website: Number,
+    website: String,
     popularDishes: [String],
     averageCost: Number,
     amenties: String,
@@ -34,6 +34,9 @@ const RestaurantSchema = new Mongoose.Schema({
     },
 
     
+},
+{
+    timestamps: true,
 });
 
 export const RestaurantModel = mongoose.model("Restaurants", RestaurantSchema);
