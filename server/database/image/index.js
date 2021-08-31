@@ -1,6 +1,6 @@
 import  mongoose  from "mongoose";
 
-const ImageSchema = new Mongoose.Schema({
+const ImageSchema = new mongoose.Schema({
     images:[
 
         {

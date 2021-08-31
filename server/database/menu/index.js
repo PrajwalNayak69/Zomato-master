@@ -1,6 +1,6 @@
 import  mongoose  from "mongoose";
 
-const MenuSchema = new Mongoose.Schema({
+const MenuSchema = new mongoose.Schema({
     menu:[
         {
             name:{type: String, required: true  },
