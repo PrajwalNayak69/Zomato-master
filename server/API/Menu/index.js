@@ -30,7 +30,7 @@ Router.get("/list/:id", async (req, res) => {
 Route     /imag
 Des       Get all menu image based on id 
 Params    _id
-Access    Public
+Access    Public yes
 Method    get 
 */
 
