@@ -6,6 +6,9 @@ import { MenuModel, ImageModel } from "../../database/allModels";
 
 const Router = express.Router();
 
+//validtion
+import { ValidateMenuId } from "../../validation/menu";
+
 /*
 Route     /list
 Des       Get all list  menu based on id
@@ -16,6 +19,7 @@ Method    get
 
 Router.get("/list/:id", async (req, res) => {
     try {
+        await ValidateMenuId(res.params);
         const { _id } = req.params;
         const menu = await MenuModel.findOne( _id);
 
@@ -36,6 +40,7 @@ Method    get
 
 Router.get("/image/:id", async (req, res) => {
     try {
+        await ValidateMenuId(res.params);
         const { _id } = req.params;
         const menu = await ImageModel.findOne( _id);
 
