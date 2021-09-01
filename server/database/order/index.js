@@ -18,10 +18,10 @@ const OrderSchema = new mongoose.Schema({
         },
     },
 ],
-orderRating:{
-    type:Number,
-    required: true,
-},
+// orderRating:{
+//     type:Number,
+//     required: true,
+// },
 },
 {
     timestamps: true,
