@@ -3,6 +3,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import passport from "passport";
 
+//validation
+import { ValidateSignup, ValidateSignin } from "../../validation/auth";
+
 //modals
 import { UserModel } from "../../database/user" 
 
@@ -16,19 +19,16 @@ Method: POST
 */
 
 Router.post("/signup", async (req, res) => {
-try {
-    
-    await UserModel.findbyEmailAndPhone(email, phonenumber);
+  try {
+    await ValidateSignup(req.body.credentials);
 
+    await UserModel.findbyEmailAndPhone(req.body.credentials);
     const newUser = await UserModel.create(req.body.credentials);
     const token = newUser.generateJwtToken();
-    //return
-    return res.status(200).json({token, status:"success"});
-
-} catch (error) {
-    return res.status(500).json({error: error.message })
-    
-}
+    return res.status(200).json({ token, status: "success" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 });
 
 /*
@@ -40,6 +40,8 @@ Method    POST
 */
 Router.post("/signin", async (req, res) => {
     try {
+    await ValidateSignin(req.body.credentials);
+
      const user = await UserModel.findByEmailAndPassword(req.body.credentials);
       const token = user.generateJwtToken();
       return res.status(200).json({ token, status: "success" });
