@@ -8,7 +8,7 @@ const Router = express.Router();
 
 //validation
 
-// import { ValidateOrderId } from "../../validation/orders";
+import { ValidateOrderId } from "../../validation/orders";
 
 /*
 Route     /
@@ -17,8 +17,10 @@ Params    _id
 Access    Public
 Method    get 
 */
-Router.get("/", async (req, res) => {
+Router.get("/:_id", passport.authenticate("jwt"),{session: false}, async (req, res) => {
     try {
+        await ValidateOrderId(req.params);
+        const {_id} = req.params;
         const getOrders = await OrderModel.findOne({ user: _id });
         if(!getOrders){
             return res.status(404).json({error: error.message});
