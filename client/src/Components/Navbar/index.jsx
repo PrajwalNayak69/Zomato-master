@@ -1,12 +1,12 @@
 import React from 'react';
 import {FaUserAlt} from "react-icons/fa";
 import {HiLocationMarker} from "react-icons/hi";
-import {IoMdArrowDropdown, IoMdArrowDropup} from "react-icons/io";
+import {IoMdArrowDropdown} from "react-icons/io";
 import {RiSearch2Line} from "react-icons/ri";
 
 const MobileNav = () => {
 return (
-    <div className="flex items-center justify-between md:hidden">
+    <div className="flex items-center justify-between lg:hidden">
             <div className="w-28">
                 <img
                 src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
@@ -22,17 +22,18 @@ return (
 </div>
 )};
 
-const MdNav= () => {
+const LgNav= () => {
     return (
         <>
-            <div className="hidden items-center justify-between  md:flex lg:w-3/4">
+        <div className="container px-20 mx-auto">
+            <div className="hidden gap-4 items-center justify-between  lg:flex ">
             <div className="w-28">
                 <img
                 src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
                 alt="zomato"
                 className="w-full h-full" /> 
             </div>
-            <div className="w-full bg-white shadow-md px-3 py-3 flex items-center gap-3 border border-gray-200 rounded ">
+            <div className="w-3/4 bg-white shadow-md px-3 py-3 flex items-center gap-3 border border-gray-200 rounded ">
                 <div className="flex items-center gap-2 border-r-2 border-gray-300 pr-2">
                     <span className="text-zomato-400">
                         <HiLocationMarker />
@@ -41,17 +42,18 @@ const MdNav= () => {
                      className="w-full focus:outline-none" />
                     <IoMdArrowDropdown />
                 </div>
-                <div className="flex w-full items-center gap-3">
+                <div className="flex w-full items-center gap-4">
                     <RiSearch2Line />
                     <input type="search" placeholder="Search for Restuarant, Cuisine Or Dish" 
                     className="w-full focus:outline-none"/>
                 </div>
             </div>
-            <div className="flex gap-3 lg:justify-self-end lg:py-3">
+            <div className="ml-20 flex gap-3 ">
                 <button className="text-gray-500 text-xl hover:text-gray-800">LogIn</button>
                 <button className="text-gray-500 text-xl hover:text-gray-800">SignUp</button>
             </div>
             </div>
+        </div>
         </>
 )};
 
@@ -60,7 +62,7 @@ const Navbar = () => {
         <>
         <nav className="p-4 bg-color-white shadow-md -px-4">
         <MobileNav />
-            <MdNav />
+            <LgNav />
             
         </nav>
        
