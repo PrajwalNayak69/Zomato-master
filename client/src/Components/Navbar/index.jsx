@@ -60,7 +60,7 @@ const LgNav= () => {
 const Navbar = () => {
     return (
         <>
-        <nav className="p-4 bg-color-white shadow-md -px-4">
+        <nav className="p-4 bg-color-white shadow-md lg:shadow-none -px-4">
         <MobileNav />
             <LgNav />
             
