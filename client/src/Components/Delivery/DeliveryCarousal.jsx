@@ -22,7 +22,7 @@ const DeliveryCarousal = () => {
     },
     {
         image: "https://b.zmtcdn.com/data/pictures/7/18699707/ea43cf92e183466122a217b639d844f9_o2_featured_v2.jpg?output-format=webp",
-        title: "VadaPav",
+        title: "Sasta Burgernp",
     },
     {
         image: "https://b.zmtcdn.com/data/pictures/9/19336209/d32a4759ef89957f555c8453dd8fc49b_o2_featured_v2.jpg?output-format=webp",
@@ -42,7 +42,7 @@ const DeliveryCarousal = () => {
     },
     {
         image: "https://b.zmtcdn.com/data/pictures/9/18812329/20490f8d3a228ec64c5547e00c03b404_o2_featured_v2.jpg",
-        title: "expensive cake",
+        title: "diabeties",
     },
     {
         image: "https://b.zmtcdn.com/data/pictures/3/18811773/ebf6416b30140663830fdfb3051a6225_o2_featured_v2.jpg",
