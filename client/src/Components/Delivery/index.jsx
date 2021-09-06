@@ -7,7 +7,7 @@ import RestaurantCard from '../RestaurantCard';
 
 const Delivery = () => {
 
-    const [restaurantList, setRestaurantList] = useState([
+    const [restaurantList] = useState([
         {
             _id: "1",
             photos: [ "https://b.zmtcdn.com/data/pictures/6/18698876/8d59f9514a9680933c40d163d8ca0e4c_o2_featured_v2.jpg?output-format=webp"
