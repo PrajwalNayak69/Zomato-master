@@ -11,6 +11,9 @@ import ImageGrid from '../Components/restaurant/ImageGrid';
 //infobuttons
 import InfoButtons from '../Components/restaurant/InfoButtons';
 
+//Tabs
+import TabContainer from '../Components/restaurant/Tabs';
+
 
 import {TiStarFullOutline} from "react-icons/ti";
 import {RiDirectionFill, RiShareForwardFill} from "react-icons/ri";
@@ -50,6 +53,7 @@ const RestaurantLayout = () => {
                             <RiShareForwardFill /> Share
                             </InfoButtons>
                         </div>
+                        <TabContainer />
            </div>
         </>
     )
