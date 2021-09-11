@@ -2,13 +2,14 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom';
 import {IoMdArrowDropright} from "react-icons/io";
 import ReactStars from "react-rating-stars-component";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+
 
 //component
 
 import MenuCollection from '../../Components/restaurant/MenuCollection';
 import MenuRestaurantSimilarCard from '../../Components/restaurant/MenuRestaurantSimilarCard';
 import Reviewcard from '../../Components/restaurant/reviewcard';
+import MapView from '../../Components/restaurant/MapView';
 
 
 //slider carousal
@@ -33,7 +34,7 @@ const Overview = () => {
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 3,
+              slidesToShow: 2,
               slidesToScroll: 1,
               infinite: true,
              
@@ -113,6 +114,9 @@ const Overview = () => {
                 />,
                
                </div>
+               <div className="my-4 md:hidden flex-col gap-4 w-full">
+               <MapView title="sai's" phone="+918202570177" maplocation={[13.350726986617875, 74.7868899618099]} address="Opposite Syndicate Bank Head Office, Tiger Circle, Manipal, Eshwar Nagar, Manipal"/>
+               </div>
                 <div className="my-4 flex flex-col gap-4">
                 <Reviewcard />
                 <Reviewcard />
@@ -123,27 +127,8 @@ const Overview = () => {
                
                <aside 
                style={{ height: "fit-content "}}
-               className="hidden  md:block md:w-2/5 sticky bg-white p-3 top-2 shadow-md rounded-xl" >
-                     <div className="">
-                     <h4 className="text-xl font-medium">Call</h4>
-                     <h5 className="text-zomato-400 font-medium"> +91820257017</h5>
-                     </div>
-                     <div className="">
-                     <h4 className="text-xl font-medium">Direction</h4>
-                     <div className="w-full h-48">
-                     <MapContainer center={[13.350726986617875, 74.7868899618099]} zoom={13} scrollWheelZoom={false}>
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={[13.350726986617875, 74.7868899618099]}>
-                        <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                    </Marker>
-                    </MapContainer>
-                     </div>
-                     </div>
+               className="hidden  md:flex md:w-2/5 sticky bg-white p-3 top-2 shadow-md rounded-xl  flex-col gap-4" >
+                    <MapView title="sai's" phone="+918202570177" maplocation={[13.350726986617875, 74.7868899618099]} address="Opposite Syndicate Bank Head Office, Tiger Circle, Manipal, Eshwar Nagar, Manipal"/>
                </aside>
                </div> 
         </>
