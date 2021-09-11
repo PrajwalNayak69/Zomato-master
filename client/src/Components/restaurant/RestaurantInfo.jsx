@@ -5,7 +5,7 @@ const RestaurantInfo = (props) => {
     return (
         <>
             <div className="my-4">
-                        <div className="flex flex-col flex-col-reverse md:flex-row md:items-center justify-between gap-3">
+                        <div className="flex  flex-col-reverse md:flex-row md:items-center justify-between gap-3">
                             <h1 className="text-xl md:text-3xl font-semibold md:font-bold ">{props.name}</h1>
                         
                         <div className="flex items-center gap-6 text-xs md:text-base">

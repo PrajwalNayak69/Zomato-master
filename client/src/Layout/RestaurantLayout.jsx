@@ -19,7 +19,7 @@ import {TiStarFullOutline} from "react-icons/ti";
 import {RiDirectionFill, RiShareForwardFill} from "react-icons/ri";
 import {BiBookmarkPlus} from "react-icons/bi"
 
-const RestaurantLayout = () => {
+const RestaurantLayout = (props) => {
     return (
         <>
         {" "}
@@ -53,7 +53,11 @@ const RestaurantLayout = () => {
                             <RiShareForwardFill /> Share
                             </InfoButtons>
                         </div>
-                        <TabContainer />
+                       <div className="my-10">
+                       <TabContainer>
+                           </TabContainer>
+                       </div>
+                                {props.children}
            </div>
         </>
     )
