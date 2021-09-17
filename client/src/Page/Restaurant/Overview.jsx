@@ -8,7 +8,7 @@ import ReactStars from "react-rating-stars-component";
 
 import MenuCollection from '../../Components/restaurant/MenuCollection';
 import MenuRestaurantSimilarCard from '../../Components/restaurant/MenuRestaurantSimilarCard';
-import Reviewcard from '../../Components/restaurant/reviewcard';
+import Reviewcard from '../../Components/restaurant/reviews/reviewcard';
 import MapView from '../../Components/restaurant/MapView';
 
 
@@ -23,6 +23,7 @@ const ratingChanged = (newRating) => {
 const Overview = () => {
     const {id} = useParams();
     const settings = {
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,

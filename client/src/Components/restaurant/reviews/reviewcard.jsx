@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+//componet
+
+
 import {TiStar} from "react-icons/ti"
 
 const reviewcard = () => {
+ 
     return (
         <>
             <div className="my-3 flex flex-col gap-3">
