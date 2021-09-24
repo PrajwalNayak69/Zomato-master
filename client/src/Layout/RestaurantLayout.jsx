@@ -14,6 +14,9 @@ import InfoButtons from '../Components/restaurant/InfoButtons';
 //Tabs
 import TabContainer from '../Components/restaurant/Tabs';
 
+//Cart
+import CartContainer from '../Components/Cart/CartContainer';
+
 
 import {TiStarFullOutline} from "react-icons/ti";
 import {RiDirectionFill, RiShareForwardFill} from "react-icons/ri";
@@ -59,6 +62,7 @@ const RestaurantLayout = (props) => {
                        </div>
                                 {props.children}
            </div>
+           <CartContainer />
         </>
     )
 }

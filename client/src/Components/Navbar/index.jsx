@@ -69,7 +69,7 @@ const LgNav= () => {
             </div>
             <div className="ml-20 flex gap-3 ">
                 <button className="text-gray-500 text-xl hover:text-gray-800" onClick={SignIn}>SignIn</button>
-                <button className="text-gray-500 text-xl hover:text-gray-800">SignUp</button>
+                <button className="text-gray-500 text-xl hover:text-gray-800" onClick={SignUp}>SignUp</button>
             </div>
             </div>
         </div>
