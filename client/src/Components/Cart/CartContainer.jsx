@@ -30,7 +30,7 @@ const CartLG = ({toggle}) => {
             onClick={toggle}
           >
             <IoMdArrowDropup />
-          </button>``
+          </button>
                 </span>
                     <h4 className="text-xl font-semibold"> Your Orders ( 1 )</h4>
             </div>
