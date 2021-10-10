@@ -57,17 +57,17 @@ Params    _id
 Access    Public
 Method    get 
 */
-Router.post("/", upload.array("file", 4),  async (req, res) => {
+Router.post("/", upload.single("file"),  async (req, res) => {
     try {
        const file = req.file;
 
     //s3 bucket options
     const bucketOptions = {
-        Bucket: "name",
-        Key: file.originalname,
-        Body: file.buffer,
-        ContentTyoe: file.mimetype,
-        ACL: "public-read",
+      Bucket: "prajwalzomato1",
+      Key: file.originalname,
+      Body: file.buffer,
+      ContentType: file.mimetype,
+      ACL: "public-read", // Access Control List
     };
 
     /*
