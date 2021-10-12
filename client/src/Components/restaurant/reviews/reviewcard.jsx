@@ -4,7 +4,7 @@ import React from 'react';
 
 import {TiStar} from "react-icons/ti"
 
-const reviewcard = () => {
+const Reviewcard = () => {
  
     return (
         <>
@@ -39,4 +39,4 @@ const reviewcard = () => {
     )
 }
 
-export default reviewcard;
+export default Reviewcard;

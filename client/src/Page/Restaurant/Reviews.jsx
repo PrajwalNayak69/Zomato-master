@@ -3,7 +3,7 @@ import ReactStars from 'react-rating-stars-component';
 
 
 //componet
-import Reviewcard from '../../Components/restaurant/reviews/reviewcard';
+import Reviewcard from '../../Components/restaurant/reviews/Reviewcard';
 import AddReviewCard from '../../Components/restaurant/reviews/AddReviewCard';
 
 
