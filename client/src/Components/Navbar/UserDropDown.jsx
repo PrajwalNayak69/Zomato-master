@@ -1,32 +1,24 @@
-import { Menu } from '@headlessui/react';
+import { Menu } from "@headlessui/react";
+import { FaUserAlt } from "react-icons/fa";
 
-
-function MyDropdown() {
+function UserDropdown() {
   return (
     <Menu>
-      <Menu.Button> <span className="border p-2 border-gray-300 text-zomato-400 rounded-full">
-               
-            </span></Menu.Button>
+      <Menu.Button>
+        <span className="border p-2 border-gray-300 text-zomato-400 rounded-full">
+          <FaUserAlt />
+        </span>
+      </Menu.Button>
       <Menu.Items>
         <Menu.Item>
-        <button
-              className={ 'bg-blue-500'}
-              href="/account-settings"
-            >
-              SignIn
-            </button>
+          <button>Sign In</button>
         </Menu.Item>
         <Menu.Item>
-        <button
-              className={'bg-blue-500'}
-              href="/account-settings"
-            >
-              SignUp
-            </button>
+          <button>Sign Up</button>
         </Menu.Item>
       </Menu.Items>
     </Menu>
-  )
+  );
 }
 
-export default MyDropdown;
+export default UserDropdown;

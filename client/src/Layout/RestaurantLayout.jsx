@@ -11,12 +11,12 @@ import ImageGrid from "../Components/restaurant/ImageGrid";
 import InfoButtons from "../Components/restaurant/InfoButtons";
 import RestaurantInfo from "../Components/restaurant/RestaurantInfo";
 import TabContainer from "../Components/restaurant/Tabs";
-
+import CartContainer from "../Components/Cart/CartContainer";
 
 // Redux actions
 import { getSpecificRestaurant } from "../Redux/Reducer/restaurant/restaurant.action";
 import { getImage } from "../Redux/Reducer/Image/Image.action";
-
+import { getCart } from "../Redux/Reducer/Cart/Cart.action";
 const RestaurantLayout = (props) => {
   const [restaurant, setRestaurant] = useState({
     images: [],
@@ -34,12 +34,12 @@ const RestaurantLayout = (props) => {
         ...data.payload.restaurant,
       }));
 
-      dispatch(getImage(data.payload.restaurant.photos)).then((data) =>
-        setRestaurant((prev) => ({ ...prev, ...data.payload.image }))
-      );
+    //   dispatch(getImage(data.payload.restaurant.photos)).then((data) =>
+    //     setRestaurant((prev) => ({ ...prev, ...data.payload.image }))
+    //   );
     });
 
-    dispatch();
+    dispatch(getCart());
   }, []);
 
   return (
@@ -74,7 +74,7 @@ const RestaurantLayout = (props) => {
         </div>
         <div className="relative">{props.children}</div>
       </div>
-    
+      <CartContainer />
     </>
   );
 };
