@@ -1,52 +1,74 @@
 import express from "express";
 import passport from "passport";
 
-//databse model
-import { UserModel } from "../../database/allModels";
+//database modal
+import {UserModel} from "../../database/allModels";
 
 const Router = express.Router();
+
+/* 
+Route - /
+Descript - get user data
+Params - id
+Access - Public
+Method - GET
+*/
+
+Router.get("/", passport.authenticate("jwt"), async (req, res) => {
+
+    try {
+        const {email, fullname, phoneNumber, address} = req.session.passport.user._doc;
+        return res.json({user :{email, fullname, phoneNumber, address}});
+    
+    } catch (error) {
+        return res.status(500).json({error : error.message});
+    }
+});
 
 /*
 Route     /:_id
 Des       Get user data
 Params    _id
-body        none
+BODY      none
 Access    Public
-Method    get 
+Method    GET  
 */
-Router.get("/:_id", async(req, res)=> {
+Router.get("/:_id", async (req, res) => {
     try {
-        const { _id } = req.params;
-        const getUser = await UserModel.findById(_id);
-
-        return res.json({ user: getUser });
+      const user = await UserModel.findById(req.params._id);
+      const { fullname } = user;
+  
+      return res.json({ user: { fullname } });
     } catch (error) {
-        return res.status(500).json({error: error.message});
+      return res.status(500).json({ error: error.message });
     }
-});
-/*
-Route     /update/:_id
-Des       update user data
-Params    _id
-body       user data
-Access    Public
-Method    put
+  });
+  
+
+/* 
+Route - /update
+Descript - update user id
+Params - id
+Access - Public
+Method - PUT
 */
-Router.put("/update/:_id", async  (req, res) => {
+
+Router.put("/update/:_userID", async (req, res) => {
     try {
-        const { _id } = req.params;
-        const { userData } = req.body;
-    
-        const updateUserData = await UserModel.findByIdAndUpdate( _id, {
-            $set: userData,
-        },
-        {
-            new: true
+        const {_userID} = req.params;
+        const {userData} = req.body;
+
+        const updateUserData = await UserModel.findByIdAndUpdate(_userID, {
+            $set : userData,
+        }, 
+        { 
+            new : true
         });
-        return res.json({user: updateUserData });
         
+        return res.json({user : updateUserData});
+
     } catch (error) {
-        return res.status(500).json({error: error.message});
+        return res.status(500).json({error : error.message});
     }
 });
 

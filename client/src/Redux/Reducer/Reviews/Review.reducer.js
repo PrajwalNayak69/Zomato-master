@@ -1,4 +1,4 @@
-import { GET_REVIEW, POST_REVIEW } from "./review.type";
+import { GET_REVIEW, POST_REVIEW } from "./Review.type";
 
 const INITIAL_STATE = {
   reviews: [],
