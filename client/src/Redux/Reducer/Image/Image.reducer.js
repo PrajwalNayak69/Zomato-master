@@ -1,21 +1,24 @@
-import { GET_IMAGE  } from "./Image.type";
+
+   
+import { GET_IMAGE } from "./Image.type";
 
 const INITIAL_STATE = {
-    Image:[],
+  Image: [],
 };
 
 const ImageReducer = (state = INITIAL_STATE, action) => {
-    switch(action.type){
-        case GET_IMAGE:
-            return {
-                ...state,
-                restaurants: action.payload,
-            };
-            default:
-                return {
-                    ...state,
-                };
-        }
+  switch (action.type) {
+    case GET_IMAGE:
+      return {
+        ...state,
+        Image: action.payload,
+      };
+
+    default:
+      return {
+        ...state,
+      };
+  }
 };
 
 export default ImageReducer;

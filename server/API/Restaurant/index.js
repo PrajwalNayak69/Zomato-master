@@ -41,13 +41,13 @@ Router.get("/s/:search", async (req, res) => {
 // @des     add new restaurant
 // @access  PRIVATE
 Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
-    try {
-      const newRetaurant = await RestaurantModal.create(req.body.retaurantData);
-      return res.json({ restaurants: newRetaurant });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
-  });
+  try {
+    const newRetaurant = await RestaurantModal.create(req.body.retaurantData);
+    return res.json({ restaurants: newRetaurant });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 
 // @Route   PATCH /restaurants/update
 // @des     update exisitng restaurant data

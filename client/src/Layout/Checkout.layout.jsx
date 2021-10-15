@@ -1,15 +1,24 @@
-import React from 'react';
-import Navbar from '../Components/Navbar/checkoutNavbar';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+// components
+import Navbar from "../Components/Navbar/checkoutNavbar";
+// redux action
+import { getCart } from "../Redux/Reducer/Cart/Cart.action";
 
 const CheckoutLayout = (props) => {
-    return (
-        <>
-          <Navbar />  
-          <div className="conatiner mx-auto px-2 lg:px-20">
-              {props.children}
-          </div>
-        </>
-    )
-}
+  const dispatch = useDispatch();
 
-export default  CheckoutLayout;
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4 lg:px-20 ">{props.children}</div>
+    </>
+  );
+};
+
+export default CheckoutLayout;

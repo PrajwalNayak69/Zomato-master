@@ -1,18 +1,15 @@
-import React, {useEffect}from 'react';
-import { useHistory, useParams } from 'react-router';
+
+import React, { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 const Redirect = () => {
-    const history = useHistory();
-    const {id} = useParams();
-    useEffect(() => {
-        history.push(`/restaurant/{id}/overview`);
-        
-    }, [])
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const history = useHistory();
+  const { id } = useParams();
+  useEffect(() => {
+    history.push(`/restaurant/${id}/overview`);
+  }, []);
 
-export default Redirect
+  return <div></div>;
+};
+
+export default Redirect;

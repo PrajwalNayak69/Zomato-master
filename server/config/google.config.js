@@ -1,44 +1,53 @@
-import passport from "passport";
 import googleOAuth from "passport-google-oauth20";
-
-import { UserModel } from "../database/user";
+import dotenv from "dotenv";
+dotenv.config({
+  path: require("path").resolve(__dirname, "../.env"),
+});
+import { UserModel } from "../database/allModels";
 
 const GoogleStrategy = googleOAuth.Strategy;
 
 export default (passport) => {
   passport.use(
-      new GoogleStrategy(
-        {
-          clientID:process.env.GOOGLE_CLIENT_ID,
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-          callbackURL: "http://localhost:4000/auth/google/callback",
-        },
-        async (accessToken, refreshToken, profile, done) => {
-          const newUser = {
-            fullname: profile.displayName,
-            email: profile.emails[0].value,
-            profilePic: profile.photos[0].value,
-          };
-          try {
-            const user = await UserModel.findOne({
-              email: newUser.email,
-            });
-            const token = user.generateAuthToken();
-            if (user) {
-              done(null, { user, token });
-            } else {
-              const user = await UserModel.create(newUser);
-              const token = user.generateAuthToken();
-  
-              done(null, { user, token });
-            }
-          } catch (error) {
-            done(error, null);
+    new GoogleStrategy(
+      {
+        clientID:
+          "762156507406-h513hckodpic3or68vq8oi3dgd88rtsc.apps.googleusercontent.com",
+        clientSecret: "cI6d4wZCSYuGi6ph2Uk9gs3l",
+        callbackURL: "http://localhost:4000/auth/google/callback",
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        // creating a new user object
+        const newUser = {
+          fullname: profile.displayName,
+          email: profile.emails[0].value,
+          profilePic: profile.photos[0].value,
+        };
+        try {
+          // check if the user exist
+          const user = await UserModel.findOne({ email: newUser.email });
+
+          if (user) {
+            // generate token
+            const token = user.generateJwtToken();
+            // return user
+            done(null, { user, token });
+          } else {
+            // create new user
+            const user = await UserModel.create(newUser);
+
+            // generate token
+            const token = user.generateJwtToken();
+            // return user
+            done(null, { user, token });
           }
+        } catch (error) {
+          done(error, null);
         }
-      )
-    );
-  
-    passport.serializeUser((userData, done) => done(null, { ...userData }));
-    passport.deserializeUser((id, done) => done(null, id));
-  };
+      }
+    )
+  );
+
+  passport.serializeUser((userData, done) => done(null, { ...userData }));
+  passport.deserializeUser((id, done) => done(null, id));
+};

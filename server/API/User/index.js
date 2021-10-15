@@ -1,75 +1,43 @@
 import express from "express";
-import passport from "passport";
+import bcrypt from "bcryptjs";
 
-//database modal
-import {UserModel} from "../../database/allModels";
+// Database Modals
+import { UserModal } from "../../database/allModels";
 
 const Router = express.Router();
 
-/* 
-Route - /
-Descript - get user data
-Params - id
-Access - Public
-Method - GET
-*/
+Router.get("/:userID", async (req, res) => {
+  try {
+    const { userID } = req.params;
+    const getUser = await UserModal.findById(userID);
+    if (!getUser) return res.json({ user: [] });
 
-Router.get("/", passport.authenticate("jwt"), async (req, res) => {
-
-    try {
-        const {email, fullname, phoneNumber, address} = req.session.passport.user._doc;
-        return res.json({user :{email, fullname, phoneNumber, address}});
-    
-    } catch (error) {
-        return res.status(500).json({error : error.message});
-    }
+    return res.json({ user: getUser });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 });
 
-/*
-Route     /:_id
-Des       Get user data
-Params    _id
-BODY      none
-Access    Public
-Method    GET  
-*/
-Router.get("/:_id", async (req, res) => {
-    try {
-      const user = await UserModel.findById(req.params._id);
-      const { fullname } = user;
-  
-      return res.json({ user: { fullname } });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
+Router.patch("/update", async (req, res) => {
+  try {
+    const { userData } = req.body;
+    if (userData.password) {
+      const salt = await bcrypt.genSalt(8);
+      const hashPassword = await bcrypt.hash(userData.password, salt);
+      userData.password = hashPassword;
     }
-  });
-  
 
-/* 
-Route - /update
-Descript - update user id
-Params - id
-Access - Public
-Method - PUT
-*/
-
-Router.put("/update/:_userID", async (req, res) => {
-    try {
-        const {_userID} = req.params;
-        const {userData} = req.body;
-
-        const updateUserData = await UserModel.findByIdAndUpdate(_userID, {
-            $set : userData,
-        }, 
-        { 
-            new : true
-        });
-        
-        return res.json({user : updateUserData});
-
-    } catch (error) {
-        return res.status(500).json({error : error.message});
-    }
+    const updateUserProfile = await UserModal.findByIdAndUpdate(
+      userData._id,
+      {
+        $set: userData,
+      },
+      { new: true }
+    );
+    return res.json({ user: updateUserProfile });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 });
 
 export default Router;
